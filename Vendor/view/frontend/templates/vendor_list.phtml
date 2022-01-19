@@ -1,0 +1,33 @@
+<?php
+/**
+ * @var \Codilar\Vendor\Block\View $block
+ */
+$vendors = $block->getAllVendors();
+?>
+<div class="vendor-listing">
+    <h1> Vendor Details</h1>
+    </form><br>
+    <?php if (count($vendors) > 0): ?>
+        <table>
+            <tr>
+                <th><?php echo __('Id') ?></th>
+                <th><?php echo __('Vendor Name') ?></th>
+                <th><?php echo __('website') ?></th>
+            </tr>
+            <?php foreach ($block->getAllVendors() as $vendor): ?>
+                <?php if($vendor->getIsActive()):?>
+                <tr>
+                    <td><?php echo $vendor->getEntityId()?></td>
+                    <td><a href="<?php echo $block->getVendorUrl().'entity_id/'.$vendor->getEntityId() ?>"><?php echo $vendor->getVendorName() ?></a></td>
+                    <td><?php echo $vendor->getWebsite() ?></td>
+                </tr>
+                <?php endif;  ?>
+            <?php endforeach; ?>
+            </thead>
+        </table>
+    <?php else: ?>
+        <h3>vendor detail is not available</h3>
+    <?php endif; ?>
+
+
+    
